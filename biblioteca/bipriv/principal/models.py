@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Autores(models.Model):
@@ -29,6 +30,7 @@ class Contas(models.Model):
     nome = models.CharField(max_length=30)
     cargo = models.CharField(max_length=15)
     nif = models.IntegerField()
+    utilizador = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nome
@@ -94,3 +96,4 @@ class Local(models.Model):
     class Meta:
         db_table = 'local'
         verbose_name_plural = 'Locais'
+
